@@ -64,7 +64,6 @@ for i in keys:
     bar.reversal_axis()
     bar.set_global_opts(
         title_opts=TitleOpts(title=f"Population of {i}"),
-        toolbox_opts=ToolboxOpts(is_show = True),
     )
 
     # construct timeline
@@ -75,8 +74,8 @@ for i in keys:
 timeline.add_schema(
     play_interval=1000,
     is_auto_play=True,
-    is_timeline_show=True,
-    is_loop_play=False
+    is_timeline_show=False,
+    is_loop_play=True
 )
 
 # render
