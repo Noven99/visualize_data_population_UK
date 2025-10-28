@@ -1,5 +1,5 @@
 from pyecharts.charts import Bar,Timeline
-from pyecharts.options import TitleOpts, LegendOpts, ToolboxOpts, VisualMapOpts, LabelOpts
+from pyecharts.options import TitleOpts, ToolboxOpts, LabelOpts
 
 # get data
 f = open("pop.csv", "r", encoding="UTF-8")
@@ -37,7 +37,13 @@ print(data_dict)
 
 # get x(area) and y(population) data
 
-timeline = Timeline()
+timeline = Timeline(
+    init_opts={
+        "width": "1500px",
+        "height": "600px",
+        "style": {"margin": "0 auto", "display": "block"}  #
+    }
+)
 
 keys = data_dict.keys() #get years
 for i in keys:
@@ -57,7 +63,8 @@ for i in keys:
     bar.add_yaxis("Poulation", y_data, label_opts=LabelOpts(position="right"))
     bar.reversal_axis()
     bar.set_global_opts(
-        title_opts=TitleOpts(title=f"Population of {i}")
+        title_opts=TitleOpts(title=f"Population of {i}"),
+        toolbox_opts=ToolboxOpts(is_show = True),
     )
 
     # construct timeline
